@@ -1,0 +1,36 @@
+class Solution {
+	public int rotate(int[] nums, int k) {
+		int n = nums.length;
+		k =  k % n;
+		swapElements(nums, 0, n - 1);
+		swapElements(nums, 0, k - 1);
+		swapElements(nums, k, n - 1);
+	}
+	
+	public void swapElements(int[] nums, int start, int end) {
+		while(start < end) {
+			int temp = nums[start];
+			nums[start] = nums[end];
+			nums[end] = temp;
+			start++;
+			end--;
+		}
+	}
+}
+
+/* Even the below implementation of the rotate method works
+for less no. of elements in the array, but fails when the array
+size is more */
+/*
+public int rotate(int[] nums, int k) {
+	while (k > 0) {
+		int temp = nums[nums.length - 1];
+		for (int i = nums.length - 1; i > 0; i--) {
+			nums[i] = nums[i - 1];
+		}
+		nums[0] = temp;
+		k--;
+	}
+	System.out.println(Arrays.toString(nums));
+}
+*/
